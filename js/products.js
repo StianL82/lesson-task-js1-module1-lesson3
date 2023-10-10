@@ -1,3 +1,5 @@
+//måtte selvfølgelig se på fasit her.
+
 const products = [
     {
         name: "Fancy Product",
@@ -17,25 +19,25 @@ const products = [
 
 const container = document.querySelector(".container");
 
-/* console.log(container); */
-
 let html = "";
 
-for (let i =0; i < products.length; i++){
-
-    let displayPrice = "Not Defined"
+for (let i = 0; i < products.length; i++) {
+    let displayPrice = "Unavailable";
 
     if (products[i].price) {
         displayPrice = products[i].price;
     }
 
-    html += `<div class="container">
-            <h4>${products[i].name}</h4>
-            <b>${displayPrice}</b>
-            <b>${products[i].soldOut}</b>
-            </div>
-`;
-console.log(html);
+    let colour = "green";
+
+    if (products[i].soldOut) {
+        colour = "red";
+    }
+
+    html += `<div class="product">
+                <h4 style="color: ${colour}">${products[i].name}</h4>
+                <div>Price: ${displayPrice}</div>
+            </div>`;
 }
 
 container.innerHTML = html;
